@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervasyon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleRezervasyon.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="anaSayfa.html">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="hakkimizda.html">| Hakkımızda</a></li>
+                <li class="nav-item"><a href="ietisim.html">| İletişim</a></li>
+                <li class="nav-item"><a href="hangiSehirdeNeYenir.html">| Restoran Tavsiyeleri</a></li>
+                <li class="nav-item"><a href="rezervasyon.html">| Rezervasyon</a></li>
+                <li class="nav-item"><a href="UlaşimRehberi.html">| Ulaşım Rehberi</a></li>
+                <li class="nav-item"><a href="YaptigimizCalismalar.html">| Önceki Gezilerimiz</a></li>
+                <li><a href="GirisYap.html">| Oturum Aç</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="image-container">
+                <img src="Konya.webp" alt="Görsel">
+            </div>
+
+            <div class="container">
+                <form>
+                    <label for="sehir">Şehir Seçin:</label>
+                    <select id="sehir">
+                        <option value="Kapadokya">Kapadokya</option>
+                        <option value="İstanbul">İstanbul</option>
+                        <option value="Bursa">Bursa</option>
+                        <option value="Konya">Konya</option>
+                    </select>
+
+                    <label for="tarih">Tarih Seçin:</label>
+                    <input type="date" id="tarih" required>
+
+                    <label for="saatler">Saat Seçin:</label>
+                    <select id="saatler">
+                        <option value="07:00-19:00">07:00 - 19:00</option>
+                        <option value="09:00-20:00">09:00 - 20:00</option>
+                    </select>
+
+                    <label for="telNo">Telefon Numarası:</label>
+                    <input type="text" id="telNo" placeholder="Telefon numaranızı girin" required>
+
+                    <label for="kisiSayisi">Kişi Sayısı:</label>
+                    <select id="kisiSayisi">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <button type="button" onclick="BeyzepediaTur()">Rezervasyon Yap</button>
+                </form>
+
+                <div id="sonuc"></div>
+                <div id="hata"></div>
+            </div>
+
+            <script>
+                function BeyzepediaTur() {
+                    var city = document.getElementById('sehir').value;
+                    var date = document.getElementById('tarih').value;
+                    var time = document.getElementById('saatler').value;
+                    var phone = document.getElementById('telNo').value;
+                    var peopleCount = document.getElementById('kisiSayisi').value;
+
+                    var error = document.getElementById('hata');
+                    var sehirFiyatlari = {
+                        "Kapadokya": 750,
+                        "İstanbul": 700,
+                        "Bursa": 400,
+                        "Konya": 320
+                    };
+
+                    if (city && date && time && phone && peopleCount) {
+                        var fiyatlandirma = sehirFiyatlari[city];
+                        var Toplam = fiyatlandirma * peopleCount;
+
+                        alert('Rezervasyonunuz yapılmıştır. Sağlıcakla kalınız.\n' +
+                            'Şehir: ' + city + '\n' +'Tarih: ' + date + '\n' +'Saat: ' + time + '\n' +
+                            'Telefon numaranız üzerinden size geri dönüş yapılacaktır.\n' +'Toplam Kişi Sayısı: ' + peopleCount + '\n' +'Toplam Fiyat: ' + Toplam + ' TL'
+                      + '\n' +"Ücretler NAKİT OLARAK GEZİDEN HEMEN ÖNCE TOPLANACAKTIR!!!");
+
+         error.innerHTML = '';
+         } else {
+     alert(innerHTML = 'Lütfen tüm alanları doldurunuz.');
+  }
+                }
+ </script>
+</body>
+</html>
